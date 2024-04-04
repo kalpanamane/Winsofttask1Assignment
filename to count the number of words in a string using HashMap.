@@ -1,0 +1,15 @@
+Q.3 to count the number of words in a string using HashMap
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+    public static void main(String[] args) {
+        String str = "Hello world! let's test the string.";
+        System.out.println("Number of words: " + countWords(str));
+    }
+
+    public static int countWords(String str) {
+        String[] words = str.split("\\s+");
+        return words.length;
+    }
+}
