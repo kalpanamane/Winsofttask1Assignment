@@ -1,0 +1,37 @@
+Q.2 maximum sum of given arrays
+
+public class Main {
+    public static void main(String[] args) {
+        int[] M = { 3, 6, 7, 8, 10, 12, 15, 18, 100 };
+        int[] N = { 1, 2, 3, 5, 7, 9, 10, 11, 15, 16, 18, 25, 50 };
+        System.out.println(maxSumPath(M, N));
+    }
+
+    public static int maxSumPath(int[] M, int[] N) {
+        int sum = 0;
+        int sumM = 0;
+        int sumN = 0;
+        int i = 0, j = 0;
+        while (i < M.length && j < N.length) {
+            if (M[i] < N[j]) {
+                sumM += M[i++];
+            } else if (M[i] > N[j]) {
+                sumN += N[j++];
+            } else {
+                sum += Math.max(sumM, sumN) + M[i];
+                sumM = 0;
+                sumN = 0;
+                i++;
+                j++;
+            }
+        }
+        while (i < M.length) {
+            sumM += M[i++];
+        }
+        while (j < N.length) {
+            sumN += N[j++];
+        }
+        sum += Math.max(sumM, sumN);
+        return sum;
+    }
+}
