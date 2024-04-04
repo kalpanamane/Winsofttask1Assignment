@@ -1,0 +1,35 @@
+Q.1 Merge two arrays 
+
+import java.util.Arrays;
+public class Main {
+    public static void main(String[] args) {
+        int[] A = { 0, 2, 0, 3, 0, 5, 6, 0, 0 };
+        int[] B = { 1, 8, 9, 10, 15 };
+        mergeArrays(A, B);
+        System.out.println(Arrays.toString(A));
+    }
+
+    public static void mergeArrays(int[] A, int[] B) {
+        int m = A.length;
+        int n = B.length;
+        int index = m - 1;
+        for (int i = m - 1; i >= 0; i--) {
+            if (A[i] != 0) {
+                A[index--] = A[i];
+            }
+        }
+        int i = index + 1;
+        int j = 0;
+        int k = 0;
+        while (i < m && j < n) {
+            if (A[i] < B[j]) {
+                A[k++] = A[i++];
+            } else {
+                A[k++] = B[j++];
+            }
+        }
+        while (j < n) {
+            A[k++] = B[j++];
+        }
+    }
+}
